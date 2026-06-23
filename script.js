@@ -371,8 +371,52 @@ function initializeWindow(elementName) {
     }
   }
 }
+var timerInterval;
+var timeLeft = 1500; // 25 minutes
+var isPaused = true;
 
+function updateDisplay() {
+    var minutes = Math.floor(timeLeft / 60);
+    var seconds = timeLeft % 60;
+    document.querySelector("#timerDisplay").innerHTML = 
+        (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+}
+
+function startTimer() {
+    if (isPaused) {
+        isPaused = false;
+        timerInterval = setInterval(function() {
+            if (timeLeft > 0) {
+                timeLeft--;
+                updateDisplay();
+            } else {
+                clearInterval(timerInterval);
+                isPaused = true;
+                alert("Training Complete, Warrior!");
+            }
+        }, 1000);
+    }
+}
+
+function pauseTimer() {
+    isPaused = true;
+    clearInterval(timerInterval);
+}
+
+function resetTimer() {
+    pauseTimer();
+    timeLeft = 1500;
+    updateDisplay();
+}
+
+// Wire up the new buttons
+document.querySelector("#startTimer").addEventListener("click", startTimer);
+document.querySelector("#pauseTimer").addEventListener("click", pauseTimer);
+document.querySelector("#resetTimer").addEventListener("click", resetTimer);
+// Wire up the button
+document.querySelector("#startTimer").addEventListener("click", startTimer);
 // 3. Initialize the windows that actually exist in your HTML
 initializeWindow("welcome");
 initializeWindow("sidequesttracker");
 initializeWindow("aboutme");
+initializeWindow("pomodoro");
