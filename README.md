@@ -1,5 +1,8 @@
 # WarriorOS
 
+<img width="1873" height="1006" alt="image" src="https://github.com/user-attachments/assets/5a66ac92-cd90-4d47-92d5-e699bac6f2cd" />
+
+
 This project is a web-based operating system that I created from scratch using JavaScript, CSS, and HTML. I used the guide from Hacklab flavourtown and this is a project I will ship in Hacklab Stardance. 
 
 ## More about the Project
